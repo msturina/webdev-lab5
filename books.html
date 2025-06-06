@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book JSON Display</title>
+</head>
+<body>
+  <h1>Check the console for output</h1>
+
+  <script>
+    fetch('books.json')
+      .then(response => response.json())
+      .then(data => {
+        // (a) The title of the first book
+        console.log("Title of the first book:", data[0].title);
+
+        // (b) The author of the second book
+        console.log("Author of the second book:", data[1].author);
+
+        // (c) The genres of all books
+        console.log("Genres of all books:");
+        data.forEach((book, index) => {
+          console.log(`Book ${index + 1}:`, book.genres.join(", "));
+        });
+      })
+      .catch(error => console.error("Error loading JSON:", error));
+  </script>
+</
